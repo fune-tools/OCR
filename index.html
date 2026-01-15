@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>コード読み子（Apple不可）</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 20px;
+      background: #f7f7f7;
+      color: #222;
+    }
+    h1 { font-size: 28px; margin: 0; }
+    .subtitle { font-size: 18px; margin-top: 4px; }
+    .note { font-size: 13px; color: #666; margin-top: 4px; }
+    .container {
+      margin-top: 20px;
+      padding: 16px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .controls {
+      margin-bottom: 12px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .results {
+      margin-top: 12px;
+      padding: 8px;
+      background: #fafafa;
+      border-radius: 6px;
+      max-height: 400px;
+      overflow-y: auto;
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .result-item {
+      padding: 6px 8px;
+      border-bottom: 1px solid #e5e5e5;
+      cursor: pointer;
+    }
+    .result-item:last-child { border-bottom: none; }
+    .result-item:hover { background: #eef6ff; }
+    textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+    }
+    button {
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #fff;
+      cursor: pointer;
+    }
+    button:hover { background: #f0f0f0; }
+    button:disabled { opacity: 0.5; cursor: default; }
+    .btn-group { display: flex; gap: 8px; }
+  </style>
+</head>
+<body>
+  <h1>コード読み子（Apple不可）</h1>
+  <div class="subtitle">amazon・Uber・PayPayなど</div>
+  <div class="note">
+    （1やlやOやQは誤認識しやすいので、申込みコードと一致しない画像ファイルは直接確認してね。）
+  </div>
+
+  <div class="container">
+    <div class="controls">
+      <input id="fileInput" type="file" accept="image/*" multiple />
+      <label><input type="radio" name="mode" value="code" checked /> コード抽出</label>
+      <label><input type="radio" name="mode" value="full" /> 全テキスト</label>
+      <button id="runBtn">読み込む</button>
+
+      <div class="btn-group">
+        <button id="copyOnlyCodeBtn" disabled>コードのみコピー</button>
+        <button id="copyCodeAmountBtn" disabled>コード＋金額コピー</button>
+      </div>
+    </div>
+
+    <textarea id="compareInput" rows="6"
+      placeholder="比較用コードと金額を入力（例）&#10;ABCD-EFGH-IJKL 500&#10;XXXX-YYYY-ZZZZ 1000&#10;コードのみでもOK"></textarea>
+
+    <button id="toggleHyphensBtn" style="margin-top:6px;">ハイフンを消す</button>
+
+    <div id="status" class="status"></div>
+    <div id="results" class="results"></div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
