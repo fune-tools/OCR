@@ -317,7 +317,7 @@ window.addEventListener("DOMContentLoaded", () => {
       .map(r => r.code)
       .join("\n");
     navigator.clipboard.writeText(text || "");
-    statusEl.textContent = "コードのみ一括コピーしました。";
+    statusEl.textContent = "コードのみ一括コピーしたよ！";
   };
 
   copyCodeAmountBtn.onclick = () => {
@@ -328,7 +328,8 @@ window.addEventListener("DOMContentLoaded", () => {
         return `${code} ${amountNum}`;
       })
       .join("\n");
-    navigator.clipboard.writeText(text || "");
-    statusEl.textContent = "コードと金額を一括コピーしました。";
+    navigator.clipboard.writeText(text || 
+    statusEl.textContent = "コードと金額を一括コピーしたよ！";
   };
 });
+
