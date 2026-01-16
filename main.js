@@ -328,8 +328,9 @@ window.addEventListener("DOMContentLoaded", () => {
         return `${code} ${amountNum}`;
       })
       .join("\n");
-    navigator.clipboard.writeText(text || 
+    navigator.clipboard.writeText(text ||""); 
     statusEl.textContent = "コードと金額を一括コピーしたよ！";
   };
 });
+
 
